@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>1.- Notas - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!-- Parte HTML -->
+
+	<h1>Notas</h1>
+	<p>Introduce la nota de un alumno.</p>
+
+	<input type="number" placeholder="Nota" id="input_nota">
+
+	<button onclick="comprobarNota()">Comprobar nota</button>
+
+
+	<!-- Script que comprueba la nota -->
+
+	<script>
+
+
+		function comprobarNota(){
+
+			let nota = document.getElementById( "input_nota" ).value;
+
+			if ( nota < 0 || nota > 10 ){
+				alert( "La nota que has introducido es incorrecta." );
+			}else if( nota < 5 ){
+				alert( "Insuficiente." );
+			}else if( nota >= 5 && nota < 6 ){
+				alert( "Suficiente." );
+			}else if( nota >= 6 && nota < 7 ){
+				alert( "Bien." );
+			}else if( nota >= 7 && nota < 9 ){
+				alert( "Notable." );
+			}else {
+				alert( "Excelente." );
+			}
+
+		}
+
+
+	</script>
+
+</body>
+</html>

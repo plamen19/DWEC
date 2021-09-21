@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2.- Máximo y mínimo - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!-- Parte HTML -->
+
+	<h1>Máximo y mínimo</h1>
+	<p>Click para mostrar el valor máximo y mínimo</p>
+
+	<button onclick="sacarValores()">Mostrar</button>
+
+
+	<!-- Script que comprueba la nota -->
+
+	<script>
+
+		// Vector con los números
+
+		let vector = [ 12, 8, 56, 80, 2, 420, 0, -9, 2, 4, 77, 20, 15, 65, 87 ];
+
+
+		// Función para sacar el valor máximo del vector
+
+		function sacarMaximo(){
+			let max;
+			max = vector[0];
+			for( let i=0; i < vector.length; i++ ){
+				if( vector[i] > max ){
+					max = vector[i];
+				}
+			}
+			return max;
+		}
+
+		// Función para sacar el valor mínimo del vector
+
+		function sacarMinimo(){
+			let min;
+			min = vector[0];
+			for( let i=0; i < vector.length; i++ ){
+				if( vector[i] < min ){
+					min = vector[i];
+				}
+			}
+			return min;
+		}
+
+		// Función que saca el valor máximo y mínimo
+
+		function sacarValores(){
+
+			alert( "El valor máximo es " + sacarMaximo() + " y el mínimo es " + sacarMinimo() );
+
+		}
+
+
+
+	</script>
+
+</body>
+</html>
