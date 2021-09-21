@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Unidad 2 - Plamen Atanasov Eftimov</title>
+</head>
+<body>
+       
+
+       <!-- BOTONES QUE REALIZAN LAS ACCIONES DE LOS EJERCICIOS -->
+
+       <button onclick="mostrarAlerts()">Mostrar alerts</button>
+
+       <button onclick="mostrarDies()">Dies de la setmana</button>
+
+
+       <!-- SCRIPT JS -->
+
+       <script>
+
+              // -------------------------------------------------
+
+
+              /**
+               * Alerts amb cometes simples i dobles
+               **/
+
+              function mostrarAlerts(){
+                     alert( "Comes dobles" );
+                     alert( 'Comes simples' );
+              }
+
+
+              // -------------------------------------------------
+
+              /**
+               * Mostrar dies de la setmana en alerts
+               **/
+
+              function mostrarDies(){
+
+                     let vectorDies = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge'];
+
+                     vectorDies.forEach(dia => {
+                           alert(dia); 
+                     });
+
+
+              }
+
+              // --------------------------------------------------
+
+
+       </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Unidad 4 - Plamen Atanasov Eftimov</title>
+
+       <style>
+
+              h1,h2,h3,h4,p,a{
+                     font-family: Arial, Helvetica, sans-serif;
+              }
+
+       </style>
+</head>
+<body>
+       
+       <p>Dime un país:</p>
+
+       <input type="text" id="input_pais">
+
+       <button onclick="responderCapital()">Enviar</button>
+
+
+       <script>
+
+              let paises = {
+
+                     'Alemania' : 'Berlín',
+                     'Austria' : 'Viena',
+                     'Bélgica' : 'Bruselas',
+                     'Bulgaria' : 'Sofía',
+                     'Croacia' : 'Zagreb',
+                     'España' : 'Madrid',
+                     'Dinamarca' : 'Copenhague',
+                     'Lituania' : 'Vilna',
+                     'Noruega' : 'Oslo',
+                     'Países Bajos' : 'Amsterdam',
+                     'Ucrania' : 'Kiev',
+                     'Suiza' : 'Berna',
+                     'Letonia' : 'Riga',
+                     'Malta' : 'La Valeta',
+                     'Portugal' : 'Lisboa',
+
+
+              };
+
+
+
+              function responderCapital(){
+
+                     let nombre_pais = document.getElementById('input_pais').value;
+
+                     alert( paises[nombre_pais] ? paises[nombre_pais] : "El país no existe." );
+
+              }
+
+       </script>
+
+</body>
+</html>

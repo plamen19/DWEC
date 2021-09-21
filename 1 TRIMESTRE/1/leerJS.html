@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Unidad 1 - Cómo agregar JS al documento - Plamen Atanasov Eftimov</title>
+
+       <script src="externo.js"></script>
+
+       <style>
+
+              h1,h2,h3,h4,p,a{
+                     font-family: Arial, Helvetica, sans-serif;
+              }
+
+       </style>
+</head>
+<body>
+       
+       <button onclick="alert('Hola!');">JS cargado dentro de esta etiqueta</button>
+
+       <button onclick="saludoInterno()">JS En el documento actual</button>
+
+       <button onclick="saludoExterno()">JS Cargado desde un archivo</button>
+
+       <script>
+
+              function saludoInterno() {
+
+                     alert( "Código cargado en el documento HTML." ); 
+
+              }
+
+       </script>
+
+</body>
+</html>
