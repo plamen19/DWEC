@@ -15,15 +15,11 @@
        </style>
 </head>
 <body>
-       
-       <p>Dime un país:</p>
-
-       <input type="text" id="input_pais">
-
-       <button onclick="responderCapital()">Enviar</button>
-
 
        <script>
+
+
+              let entrada;
 
               let paises = {
 
@@ -46,15 +42,15 @@
 
               };
 
+              do{
 
+                     entrada = prompt("Dime el nombre de un país: ");
 
-              function responderCapital(){
+                     if( entrada != 'eixir' && entrada != 'Eixir' ){
+                            alert( paises[entrada] ? paises[entrada] : "El país no existe." );
+                     }
 
-                     let nombre_pais = document.getElementById('input_pais').value;
-
-                     alert( paises[nombre_pais] ? paises[nombre_pais] : "El país no existe." );
-
-              }
+              }while( entrada != 'eixir' && entrada != 'Eixir' );
 
        </script>
 
