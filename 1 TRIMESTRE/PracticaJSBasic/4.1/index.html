@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>4.1- Calculadora - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<script>
+
+		function pedirNumeros(){
+			let num1, num2;
+
+			num1 = prompt( "Dame el primer operando:" );
+			num2 = prompt( "Dame el segundo operando:" );
+
+			return [num1, num2];
+		}
+
+		function realizarOperacion(operacion){
+
+			if( +operacion == 0 ){
+				alert( "Adiós!" );
+				return;
+			}else{
+				let numeros = pedirNumeros();
+				let num1 = numeros[0];
+				let num2 = numeros[1];
+
+				switch( +operacion ){
+					case 1:
+						alert( num1 + " mas " + num2 + ": " + (+num1+(+num2)) );
+						break;
+					case 2:
+						alert( num1 + " menos " + num2 + ": " + (+num1-(+num2)) );
+						break;
+					case 3:
+						alert( num1 + " por " + num2 + ": " + (+num1*(+num2)) );
+						break;
+					case 4:
+						alert( num1 + " entre " + num2 + ": " + (+num1/+num2) );
+						break;
+				}
+
+				iniciarCalculadora();
+			}
+		}
+
+		function iniciarCalculadora(){
+
+			let eleccion;
+
+			do{
+				eleccion = prompt( "¿Qué deseas hacer? 1 = sumar, 2 = restar, 3 = multiplicar, 4 = dividir, 0 = salir:" );
+			}while( eleccion < 0 || eleccion > 4 );
+
+			realizarOperacion( eleccion );
+
+		}
+
+		iniciarCalculadora();
+
+	</script>
+
+</body>
+</html>

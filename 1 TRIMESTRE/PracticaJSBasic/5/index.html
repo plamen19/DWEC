@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>5.- Sumar hasta 1000 - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<script>
+
+		let numero = 0;
+
+		do{
+
+			let suma = prompt( "Dime un número para sumar hasta 1000 (actual "+ numero +"):" );
+			numero = numero + parseInt(suma);
+
+		}while( numero < 1000 );
+
+		alert( "Has llegado a " + numero + " sumando. El programa ha acabado." );
+
+	</script>
+
+</body>
+</html>

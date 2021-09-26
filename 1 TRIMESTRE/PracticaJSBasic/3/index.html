@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>3.- Cálculo IMC - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<script>
+
+		let altura;
+		let peso;
+
+		function getIMC( altura, peso ){
+			return peso / ( Math.pow( altura, 2 ) );
+		}
+
+		function getEstado( imc ){
+			if( imc <= 18.50 ){
+				return "Peso muy bajo";
+			}else if( imc > 18.50 && imc < 25 ){
+				return "Peso normal";
+			}else if( imc >= 25 && imc < 30 ){
+				return "Sobrepeso";
+			}else if( imc >= 30 && imc < 35 ){
+				return "Obesidad grado I";
+			}else if( imc >= 35 && imc < 40 ){
+				return "Obesidad grado II";
+			}else if( imc >= 40 ){
+				return "Obesidad grado III";
+			}else{
+				return "Valor incorrecto";
+			}
+		}
+
+		function informarUsuario(){
+			let imc_ = getIMC(altura, peso);
+
+			alert( "Tu IMC es " + imc_.toFixed(2) + " y tu estado es " + getEstado(imc_) );
+		}
+
+		function iniciarProgramaIMC(){
+			do{
+
+				altura = prompt( "Dime tu altura. Ej: 1.80 " );
+
+			}while( altura <= 0 || altura > 3 );
+
+			do{
+
+				peso = prompt( "Dime tu peso. Ej: 60 " );
+
+			}while( peso <= 0 || peso > 500 );
+
+			informarUsuario();
+		}
+
+
+		iniciarProgramaIMC();
+
+
+	</script>
+
+</body>
+</html>

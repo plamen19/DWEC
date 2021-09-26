@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>7.- Primitiva - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<script>
+
+		let primitiva = [];
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+		function generarNumeros(){
+
+			for (var i = 0; i < 6; i++) {
+				primitiva[i] = getRandomInt( 1, 49 );
+				console.log( "Numero " + (i+1) + ": " + primitiva[i] );
+			}
+
+		}
+
+
+		function iniciar(){
+
+			let elegidos = [];
+			let acertados = 0;
+			let num;
+
+			while( elegidos.length < 6 || num > 49 || num < 1 ){
+				num = prompt( "Dime un número del 1 al 49 ("+ elegidos.length + "/6):" )
+				if( num > 49 || num < 1 ){
+					alert( "Número incorrecto" );
+				}else{
+					if ( !elegidos.includes(num) ){
+						elegidos.push( num );
+					}else {
+						alert( "Ya has elegido ese número." );
+					}
+				}
+			}
+
+			for (let i = 0; i < elegidos.length; i++) {
+				if( primitiva.includes( +elegidos[i] ) ){
+					acertados++;
+				}
+			}
+
+			if( acertados == 6 ){
+				alert( "Felicidades! Has acertado todos los números de la primitiva." );
+			}else{
+				alert( "Has acertado " + acertados + " números de 6." );
+			}
+
+		}
+
+		generarNumeros();
+		iniciar();
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>4.- Ordenar números enteros - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<script>
+
+		let vector = [12, 38, 2, 38, 74, 65, 36, 34, 46, 2, 100, 50, 21, 98, 17];
+
+		alert( "Sin ordenar: " + vector );
+
+		vector.sort( function( a, b ){
+			return a - b;
+		} );
+
+		alert( "Ordenados de menor a mayor: " + vector );
+
+		vector.sort( function( a, b ){
+			return b - a;
+		} );
+
+		alert( "Ordenados de mayor a menor: " + vector );
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>6.- Buscaminas - Plamen Atanasov Eftimov</title>
+
+	<style>
+
+		h1,h2,h3,h4,p,a{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<script>
+
+		const Y_MAX = 5;
+		const X_MAX = 5;
+
+		let terreno = [];
+
+		/**
+		*	LA ESTRUCTURA DEL ARRAY TERRENO ES:
+		*	[X][] La casilla que verá el jugador
+		*	[][X] La casilla real (bomba o no)
+		**/
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+		function llenarTablero(){
+
+			for (var i = 0; i < X_MAX; i++) {
+				terreno[i] = [];
+				for (var j = 0; j < Y_MAX; j++) {
+					terreno[i][j] = [" X ", " X "];
+				}
+			}
+
+		}
+
+		function generarBombas(){
+
+			for (var i = 0; i < X_MAX; i++) {
+				for (var j = 0; j < Y_MAX; j++) {
+
+					let rand = getRandomInt( 0, 4 );
+					if( rand == 3 ){
+						terreno[i][j] = [" X ", " B "];
+					}
+				}
+			}
+
+		}
+
+		function dibujar(mostrarBombas){
+
+			for (var i = 0; i < X_MAX; i++) {
+				for (var j = 0; j < Y_MAX; j++) {
+					document.write( terreno[i][j][mostrarBombas ? 1 : 0] );
+				}
+				document.write( "<br>" );
+			}
+
+		}
+
+		function preguntarPosicion(){
+
+			let x;
+			let y;
+
+			do{
+				x = prompt( "Dime la posición X: " );
+			}while( x <= 0 || x >= X_MAX );
+
+			do{
+				y = prompt( "Dime la posición y: " );
+			}while( y <= 0 || y >= Y_MAX );
+
+			if( x && y ){
+
+				if( terreno[x-1][y-1][1] == " B " ){
+					alert( "La bomba ha explotado" );
+					document.body.innerHTML = "";
+					dibujar(true);
+				}else{
+					alert( "Te has salvado" );
+					preguntarPosicion();
+				}
+
+			}else{
+				preguntarPosicion();
+			}
+
+
+		}
+
+		llenarTablero();
+		generarBombas();
+		dibujar(false);
+
+		preguntarPosicion();
+
+	</script>
+
+</body>
+</html>
