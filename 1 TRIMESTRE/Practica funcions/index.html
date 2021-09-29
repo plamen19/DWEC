@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Práctica funcions - Plamen Atanasov Eftimov</title>
+</head>
+<body>
+
+	<button onclick="voltejarText('Aprobat')">1.- Voltejar text</button>
+	<button onclick="dadesNumeros(1,2,3,4,5,6,7,8,9)">2.- Números</button>
+	<button onclick="alert(PIDecimal())">3.- PI en dos decimals</button>
+	<button onclick="calcularArea(PIDecimal(), 50)">4.- Calcular area</button>
+	<button onclick="getVectorBingo()">5.- Generar números bingo</button>
+
+	<script>
+
+		// -------- Funciones ayudantes --------
+
+		function generarAleatorio( numeros, min, max ){
+			let random = Math.floor(Math.random() * (max - min)) + min;
+
+			return !numeros.includes(random) ? random : generarAleatorio(numeros, min, max);
+		}
+
+		// -------------------------------------
+
+		function voltejarText( text ){
+			// Split = crear array de carácteres
+			// Reverse = colocar los carácteres al revés
+			// Join = para unir los carácteres del array
+			alert( text.split("").reverse().join("") );
+		}
+
+		function dadesNumeros(){
+			if( arguments.length > 9 ){
+				alert( "T'has passat amb els arguments." );
+			}else{
+
+				// Bloque de comprobación de los argumentos
+
+				for (var i = 0; i < arguments.length; i++) {
+					if( !+arguments[i] || !Number.isInteger(+arguments[i]) || +arguments[i] < 0 || +arguments[i] > 9 ){
+						alert( "Un dels arguments no es un número enter del 0 al 9." );
+						return;
+					}
+				}
+
+				//
+
+				let sumaTotal = 0;
+				let mitjana = 0;
+
+				Object.keys(arguments).forEach( function(valor, indice) {
+				    sumaTotal+= (+valor);
+				});
+
+				mitjana = sumaTotal/arguments.length;
+
+				alert( "Parámetres rebuts: " + arguments.length + ". Suma de tots els parámetres: " + sumaTotal + ". Mitjana: " + mitjana );
+
+
+			}
+		}
+
+		function PIDecimal(){
+			return Math.PI.toFixed(2);
+		}
+
+		function calcularArea( pi, radio ){
+			alert( "Área: " + (pi*(Math.pow(radio, 2))) );
+		}
+
+		function getVectorBingo(){
+
+			let vector = [];
+
+			for (var i = 0; i < 90; i++) {
+				vector[i] = generarAleatorio(vector, 1, 100);
+			}
+
+			console.log( vector );
+
+		}
+
+	</script>
+
+</body>
+</html>
