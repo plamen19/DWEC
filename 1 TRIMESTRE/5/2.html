@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2.- Identificador de textos - Plamen Atanasov</title>
+</head>
+<body>
+
+	<script>
+
+		function identificarText(cadena){
+			const tipos = {
+				  "minus": /^[a-z0-9 ]+$/,
+				  "mayus": /^[A-Z0-9 ]+$/,
+				  "mezcla": /^[A-Za-z0-9 ]+$/
+			}
+
+			if( tipos["mayus"].test(cadena) ){
+
+				alert( "Cadena en majúscules." );
+
+			}else if( tipos["minus"].test(cadena) ){
+
+				alert( "Cadena en minúscules." );
+
+			}else if( tipos["mezcla"].test(cadena) ){
+
+				alert( "Cadena variada." );
+
+			}
+		}
+
+		identificarText( "ADJKGADK" );
+		identificarText( "mmmmmmm" );
+		identificarText( "MMMaaaM" );
+
+	</script>
+
+</body>
+</html>
