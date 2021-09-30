@@ -5,6 +5,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Práctica funcions - Plamen Atanasov Eftimov</title>
+	<style>
+		table{
+			border:2px solid black;
+			border-collapse: collapse;
+		}
+		th{
+			border:2px solid black;
+			background-color: rgba(0,150,250);
+			color: #fff;
+		}
+		tr, td{
+			border: 2px solid black;
+			padding: 5px;
+		}
+	</style>
 </head>
 <body>
 
@@ -13,18 +28,24 @@
 	<button onclick="alert(PIDecimal())">3.- PI en dos decimals</button>
 	<button onclick="calcularArea(PIDecimal(), 50)">4.- Calcular area</button>
 	<button onclick="getVectorBingo()">5.- Generar números bingo</button>
+	<button onclick="getTaulaPersones()">6.- Generar taula persones</button>
+	<button onclick="alert(formatarData(12,4,2021))">7.- Formatar data</button>
+	<button onclick="getTaulaPersonesAmpliada()">8.- Ampliació 6/7</button>
 
 	<script>
 
-		// -------- Funciones ayudantes --------
+		// -------- Funciones y vectores ayudantes --------
 
-		function generarAleatorio( numeros, min, max ){
+		let nom_mes = ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'];
+
+
+		function generarAleatori( numeros, min, max ){
 			let random = Math.floor(Math.random() * (max - min)) + min;
 
-			return !numeros.includes(random) ? random : generarAleatorio(numeros, min, max);
+			return !numeros.includes(random) ? random : generarAleatori(numeros, min, max);
 		}
 
-		// -------------------------------------
+		// ------------------------------------------------
 
 		function voltejarText( text ){
 			// Split = crear array de carácteres
@@ -77,11 +98,49 @@
 			let vector = [];
 
 			for (var i = 0; i < 90; i++) {
-				vector[i] = generarAleatorio(vector, 1, 100);
+				vector[i] = generarAleatori(vector, 1, 100);
 			}
 
 			console.log( vector );
 
+		}
+
+		function getTaulaPersones(){
+			var persones = [{nom:"Xuso", cognom:"Ortí Monton", dni: "22333444Z"},
+			{nom:"Pepe", cognom: "Ferrer Fuster", dni: "33444555X"},{nom:"Plamen", cognom: "Atanasov Eftimov", dni: "Y2431188X"},
+			{nom:"Marius", cognom: "Tankelevicius", dni: "88765123X"}, {nom:"Vicent", cognom: "Ciscar", dni: "112515663X"}];
+
+			var tabla = "<br><br><table><thead><tr><th>Nom</th><th>Cognoms</th><th>DNI</th></tr><thead><tbody>";
+
+			for (var i = 0; i < persones.length; i++) {
+				tabla+="<tr><td>"+persones[i].nom+"</td><td>"+persones[i].cognom+"</td><td>"+persones[i].dni+"</td></tr>";
+			}
+
+			tabla += "</tbody></table>";
+
+			return document.body.innerHTML += tabla;
+		}
+
+		function formatarData( dia, mes, any ){
+			return dia + " de " + (nom_mes[parseInt(mes)] ? nom_mes[parseInt(mes)] : "?") + " de " + any;
+		}
+
+		function getTaulaPersonesAmpliada(){
+			var persones = [{nom:"Xuso", cognom:"Ortí Monton", dni: "22333444Z", naix:'01/04/1976'},
+			{nom:"Pepe", cognom: "Ferrer Fuster", dni: "33444555X",naix:'11/06/1970'},{nom:"Plamen", cognom: "Atanasov Eftimov", dni: "Y2431188X",naix:'13/10/2001'},
+			{nom:"Marius", cognom: "Tankelevicius", dni: "88765123X",naix:'24/03/1998'}, {nom:"Vicent", cognom: "Ciscar", dni: "112515663X",naix:'20/11/1999'}];
+
+			var tabla = "<br><br><table><thead><tr><th>Nom</th><th>Cognoms</th><th>DNI</th><th>Data naixement</th></tr><thead><tbody>";
+
+			for (var i = 0; i < persones.length; i++) {
+				let dataSplit = persones[i].naix.split("/");
+				let dataNaix = formatarData(dataSplit[0], dataSplit[1], dataSplit[2]);
+				tabla+="<tr><td>"+persones[i].nom+"</td><td>"+persones[i].cognom+"</td><td>"+persones[i].dni+"</td><td>"+dataNaix+"</td></tr>";
+			}
+
+			tabla += "</tbody></table>";
+
+			return document.body.innerHTML += tabla;
 		}
 
 	</script>
