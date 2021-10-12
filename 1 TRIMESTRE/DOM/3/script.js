@@ -8,19 +8,25 @@ window.onload = function(){
 
 	// Cambiamos el texto del menú principal
 
-	menu[0].innerHTML = "<a>aaa</a>";
-	menu[1].innerHTML = "<a>bbb</a>";
-	menu[2].innerHTML = "<a>ccc</a>";
-	menu[3].innerHTML = "<a>ddd</a>";
-	menu[4].innerHTML = "<a>eee</a>";
+	for (var i = 0; i < menu.length; i++) {
 
-	// Cambiamos el texto del menú lateral
+		let newA = document.createElement( "a" );
 
-	menuSide[0].innerHTML = "<a>aaa</a>";
-	menuSide[1].innerHTML = "<a>bbb</a>";
-	menuSide[2].innerHTML = "<a>ccc</a>";
-	menuSide[3].innerHTML = "<a>ddd</a>";
-	menuSide[4].innerHTML = "<a>eee</a>";
+		newA.appendChild( document.createTextNode( i + "" + i + "" + i ) );
+
+		menu[i].removeChild( menu[i].firstChild );
+		menu[i].appendChild( newA );
+	}
+
+	for (var i = 0; i < menuSide.length; i++) {
+
+		let newA = document.createElement( "a" );
+
+		newA.appendChild( document.createTextNode( i + "" + i + "" + i ) );
+
+		menuSide[i].removeChild( menuSide[i].firstChild );
+		menuSide[i].appendChild( newA );
+	}
 
 	// Cambiamos el color de las letras del menú
 
