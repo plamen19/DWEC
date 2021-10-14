@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>15.- Plamen Atanasov Eftimov</title>
+	<style>
+
+		html,body{
+			font-family:'arial';
+		}
+
+		.contenedor{
+			width:60%;
+			margin:0 auto;
+			padding:10px;
+			background-color:rgba(255,255,255,0.5);
+
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="contenedor">
+
+		<h2>Posición ratón</h2>
+
+		<p id="pos_raton"></p>
+
+	</div>
+
+	<script>
+
+		function tamanoVentanaNavegador(){
+			// Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+			var dimensiones = [];
+
+			if(typeof(window.innerWidth) == 'number') {
+				// No es IE
+				dimensiones = [window.innerWidth, window.innerHeight];
+			} else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+				//IE 6 en modo estandar (no quirks)
+				dimensiones = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+			} else if(document.body && (document.body.clientWidth || document.body.clientHeight)) {
+				//IE en modo quirks
+				dimensiones = [document.body.clientWidth, document.body.clientHeight];
+			}
+
+			return dimensiones;
+		}
+
+
+		window.onload = function(){
+
+			const MARGEN = 25;
+
+			function mostrarPosicion(evento){
+
+				let dimensiones = tamanoVentanaNavegador();
+
+				// Esquina superior izquierda
+				if( evento.clientX <= MARGEN && evento.clientY <= MARGEN ){
+					document.getElementById( "pos_raton" ).innerHTML = "Esquina superior izquierda";
+
+				// Esquina superior derecha
+				}else if( evento.clientX >= (dimensiones[0] - MARGEN) && evento.clientY <= MARGEN ){
+					document.getElementById( "pos_raton" ).innerHTML = "Esquina superior derecha";
+
+				// Esquina inferior izquierda
+				}else if( evento.clientX <= MARGEN && evento.clientY >= (dimensiones[1] - MARGEN)){
+					document.getElementById( "pos_raton" ).innerHTML = "Esquina inferior izquierda";
+
+				// Esquina inferior derecha
+				}else if( evento.clientX >= (dimensiones[0] - MARGEN) && evento.clientY >= (dimensiones[1] - MARGEN)){
+					document.getElementById( "pos_raton" ).innerHTML = "Esquina inferior derecha";
+
+				}else{
+					document.getElementById( "pos_raton" ).innerHTML = "Dentro del documento";
+				}
+
+			}
+
+			document.addEventListener( "click", mostrarPosicion );
+
+		}
+
+	</script>
+
+</body>
+</html>
