@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>15.- Plamen Atanasov Eftimov</title>
+	<style>
+
+		html,body{
+			font-family:'arial';
+		}
+
+		.contenedor{
+			width:60%;
+			margin:0 auto;
+			padding:10px;
+			background-color:rgba(255,255,255,0.5);
+
+		}
+
+		.raton{
+			display:block;
+			width:50%;
+			padding:10px;
+			margin:0 auto;
+			border:1px solid black;
+		}
+
+		.teclado{
+			display:block;
+			width:50%;
+			padding:10px;
+			margin:0 auto;
+			border:1px solid black;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="contenedor">
+
+		<div class="raton">
+			<h2>Ratón</h2>
+			<p>Navegador: [<span id="coordsRaton_nav"></span>]</p>
+			<p>Pagina: [<span id="coordsRaton_pag"></span>]</p>
+		</div>
+
+		<br>
+
+		<div class="teclado">
+			<h2>Teclado</h2>
+			<p>Carácter: [<span id="infoteclado_car"></span>]</p>
+			<p>Código: [<span id="infoteclado_cod"></span>]</p>
+		</div>
+
+	</div>
+
+	<script>
+
+		window.onload = function(){
+
+			let contenedorRaton = document.getElementsByClassName( "raton" )[0];
+			let contenedorTeclado = document.getElementsByClassName( "teclado" )[0];
+
+			function cambiarColorRaton(){
+				contenedorRaton.style.backgroundColor = "#FFFFCC";
+			}
+
+			function muestraInformacion( evento ){
+
+				// Coords navegador
+				let clientX = evento.clientX;
+				let clientY = evento.clientY;
+
+				// Coords en la página
+				let pageX = evento.pageX;
+				let pageY = evento.pageY;
+
+				document.getElementById( "coordsRaton_nav" ).innerHTML = clientX +"," + clientY;
+				document.getElementById( "coordsRaton_pag" ).innerHTML = pageX +"," + pageY;
+
+				contenedorRaton.style.backgroundColor = "rgba(0,0,0,0)";
+				contenedorTeclado.style.backgroundColor = "rgba(0,0,0,0)";
+
+			}
+
+			function muestraTeclado( evento ){
+
+				document.getElementById( "infoteclado_car" ).innerHTML = String.fromCharCode(evento.charCode);
+				document.getElementById( "infoteclado_cod" ).innerHTML = evento.keyCode;
+
+				contenedorTeclado.style.backgroundColor = "#CCE6FF";
+
+			}
+
+			document.addEventListener( "mousemove", muestraInformacion );
+
+			document.addEventListener( "click", cambiarColorRaton );
+
+		       document.onkeypress = muestraTeclado;
+
+		}
+
+	</script>
+
+</body>
+</html>
