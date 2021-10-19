@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+	<title>Niveles - Plamen Atanasov Eftimov</title>
+	<style>
+
+		#contenedor{
+			text-align:center;
+		}
+
+		#celdas{
+			width:500px;
+			margin:0 auto;
+			text-align:center;
+		}
+
+		.celda{
+			width:80px;
+			height:80px;
+			text-align:center;
+			display:inline-block;
+			background-color:rgba(13, 110, 253,0.5);
+			border-radius:10px;
+			margin:5px;
+			font-size: 0.9em;
+
+			cursor:pointer;
+
+			transition: all .3s;
+
+		}
+
+		.celda p{
+			position: relative;
+			top: 5px;
+			color: #fff;
+		}
+
+		.celda img{
+			width:40px;
+			height:30px;
+		}
+
+		button{
+			width:150px;
+			margin:10px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<br>
+
+	<div id="contenedor" class="container">
+
+		<h1>Repaso</h1>
+		<p id="textoAyuda">Elige un nivel para comenzar a jugar.</p>
+
+		<br>
+
+		<div id="celdas">
+
+
+		</div>
+
+		<br>
+
+		<button onclick="empezarJuego(1)" class="btn btn-primary">Nivel 1</button>
+		<button onclick="empezarJuego(2)" class="btn btn-primary">Nivel 2</button>
+		<button onclick="empezarJuego(3)" class="btn btn-primary">Nivel 3</button>
+		<button onclick="empezarJuego(4)" class="btn btn-primary">Nivel 4</button>
+
+	</div>
+
+	<script>
+
+		let paisesInicializados = [];
+		let contenedorCeldas = document.getElementById("celdas");
+
+		// ----------------------------------
+
+		let paises = [
+			['Espanya', 'Madrid'],
+			['França', 'Paris'],
+			['Italia', 'Roma'],
+			['Alemanya', 'Berlin'],
+			['Dinamarca', 'Copenhagen'],
+			['Irlanda', 'Dublin'],
+			['Belgica', 'Bruselas'],
+			['Grecia', 'Athenas'],
+			['Portugal','Lisboa'],
+			['Suecia', 'Stockholmo'],
+			['Austria', 'Vienna'],
+			['Eslovaquia','Bratislava'],
+			['Romania', 'Bucharest'],
+			['Polonia','Warsaw'],
+			['Bulgaria','Sofia'],
+			['Lituania','Vilna'],
+		];
+
+		// ----------------------------------
+
+		function getPaisRandom( ){
+
+			let randomPais = Math.floor(Math.random() * (paises.length - 0)) + 0;
+
+			return paisesInicializados.includes(randomPais) ? getPaisRandom() : randomPais;
+
+		}
+
+		function cambiarColor(e){
+
+			if( e.target.tagName == "DIV" ){
+				if( e.target.style.backgroundColor == "rgba(0, 200, 0, 0.5)" ){
+
+					e.target.style.backgroundColor = "rgba(13, 110, 253,0.5)";
+
+				}else{
+
+					e.target.style.backgroundColor = "rgba(0, 200, 0, 0.5)";
+
+				}
+			}
+
+
+		}
+
+		function mostrarCapital( e ){
+
+			if( e.target.tagName == "DIV" ){
+
+				alert( "Capital: " + paises[e.target.id][1] );
+
+			}
+
+		}
+
+		function empezarJuego( nivel ){
+
+			paisesInicializados = [];
+
+			let celdasCreadas = document.getElementsByClassName( "celda" );
+
+			// Quitamos todas las cajas creadas anteriormente (si se ha jugado a un nivel)
+
+			contenedorCeldas.innerHTML = "";
+
+			// Creamos las cajas según el nivel
+
+			for (let i = 0; i < nivel; i++) {
+				for (var j = 0; j < nivel; j++) {
+
+					let pais = getPaisRandom();
+
+					paisesInicializados.push(pais);
+
+					contenedorCeldas.innerHTML += "<div id='" + pais + "' class='celda'><p>" + paises[pais][0] + "</p><img src='banderas/" + pais + ".png'></div>";
+
+				}
+
+				contenedorCeldas.innerHTML += "<br>";
+			}
+
+			// Agregamos los eventos onmouseover y onmouseout
+			// para poder hacer el efecto hover sobre las cajas
+
+			Array.from(celdasCreadas).forEach((caja, i) => {
+				caja.onmouseover = cambiarColor;
+				caja.onmouseout = cambiarColor;
+				caja.onclick = mostrarCapital;
+			});
+
+
+		}
+
+
+	</script>
+
+</body>
+</html>
