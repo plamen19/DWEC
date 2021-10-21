@@ -12,7 +12,7 @@
 			width:100px;
 			margin:10px;
 			border-radius: 20px;
-			padding: 20px;
+			padding: 5px;
 
 			transition: all .3s;
 
@@ -113,11 +113,7 @@
 			}
 		}
 
-		function borrarContenido(){ contenedor.innerHTML = ""; }
-		function borrarIngredientes(){ document.getElementById('ingredientesElegidos').innerHTML = ""; }
-
-		function cargarBotonesMenu(){
-
+		function crearVentanaMenu(){
 			let botonVerduras = "<button onclick='agregarIngrediente(1)' style='width:50%;' class='btn btn-primary'>Verduras</button><br><br>";
 			let botonProteinas = "<button onclick='agregarIngrediente(2)' style='width:50%;' class='btn btn-primary'>Proteinas</button><br><br>";
 			let botonEspecias = "<button onclick='agregarIngrediente(3)' style='width:50%;'class='btn btn-primary'>Especias</button><br><br>";
@@ -133,8 +129,10 @@
 
 			contenedor.innerHTML += "<button onclick='borrarIngredientes()' style='width:30%;'class='btn btn-link'>Limpiar todo</button>";
 			contenedor.innerHTML += "<button onclick='recuperarWeb()' style='width:30%;'class='btn btn-link'>Volver</button>";
-
 		}
+
+		function borrarContenido(){ contenedor.innerHTML = ""; }
+		function borrarIngredientes(){ document.getElementById('ingredientesElegidos').innerHTML = ""; }
 
 		function crearNuevoMenu(){
 
@@ -142,7 +140,7 @@
 			borrarContenido();
 
 			// Cargamos los tres botones
-			cargarBotonesMenu();
+			crearVentanaMenu();
 
 
 		}
