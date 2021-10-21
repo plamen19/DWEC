@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
 	<title>Niveles - Plamen Atanasov Eftimov</title>
 	<style>
 
@@ -99,7 +100,7 @@
 			['Eslovaquia','Bratislava'],
 			['Romania', 'Bucharest'],
 			['Polonia','Warsaw'],
-			['Bulgaria','Sofia'],
+			['Bulgaria','Sofía'],
 			['Lituania','Vilna'],
 		];
 
@@ -132,9 +133,24 @@
 
 		function mostrarCapital( e ){
 
+			let capital = prompt( "Dime la capital de "+ paises[e.target.id][0] +" :" );
+
 			if( e.target.tagName == "DIV" ){
 
-				alert( "Capital: " + paises[e.target.id][1] );
+				if( capital.toLowerCase() === paises[e.target.id][1].toLowerCase() ){
+					Swal.fire({
+					  icon: 'success',
+					  title: '¡Enhorabuena!',
+					  text: 'Has acertado correctamente la capital (' + paises[e.target.id][1] + ') de ' + paises[e.target.id][0] + '.',
+					});
+				}else{
+					Swal.fire({
+					  icon: 'error',
+					  title: 'Oops...',
+					  text: 'Esa no es la capital. La capital es: ' + paises[e.target.id][1],
+				  	});
+				}
+
 
 			}
 
@@ -159,7 +175,12 @@
 
 					paisesInicializados.push(pais);
 
-					contenedorCeldas.innerHTML += "<div id='" + pais + "' class='celda'><p>" + paises[pais][0] + "</p><img src='banderas/" + pais + ".png'></div>";
+					contenedorCeldas.innerHTML += "<div id='" + pais + "' class='celda'><p>" + paises[pais][0] + "</p></div>";
+
+					document.getElementById( pais ).style.backgroundImage = "url('banderas/" + pais + ".png')";
+					document.getElementById( pais ).style.backgroundPosition = "center 40px";
+					document.getElementById( pais ).style.backgroundSize = "30px";
+					document.getElementById( pais ).style.backgroundRepeat = "no-repeat";
 
 				}
 
@@ -177,6 +198,8 @@
 
 
 		}
+
+		empezarJuego(4);
 
 
 	</script>
