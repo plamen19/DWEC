@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ajax Pruebas - Plamen Atanasov Eftimov</title>
+	<style>
+
+		body, html{
+			background-color:white;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="ip"></div>
+	<div id="headers"></div>
+	<div id="tiempo"></div>
+
+	<script>
+
+		const PETICION = function(url, divID, texto_inicial){
+			var req = new XMLHttpRequest();
+
+			req.onreadystatechange = function(){
+				if( this.readyState == 4 && this.status == 200 ){
+
+					let parsed = JSON.parse(req.responseText);
+					let respuesta_parseada = parsed;
+
+					document.getElementById( divID ).innerHTML = texto_inicial + Object.values(respuesta_parseada) + "<br><br>";
+
+				}
+			}
+
+			req.open( "GET", url, true );
+			req.send();
+		}
+
+		window.onload = function(){
+
+			PETICION("http://ip.jsontest.com/", "ip", "Tu IP es: ");
+			PETICION("http://headers.jsontest.com/", "headers", "Tus headers: ");
+			PETICION("http://date.jsontest.com/", "tiempo", "El tiempo: ");
+
+		}
+
+	</script>
+
+</body>
+</html>
