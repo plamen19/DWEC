@@ -21,29 +21,38 @@
 
 	<script>
 
-		const PETICION = function(url, divID, texto_inicial){
-			var req = new XMLHttpRequest();
+		const AJAX = {
 
-			req.onreadystatechange = function(){
-				if( this.readyState == 4 && this.status == 200 ){
+			/*
+				PETICIÓN 'GET'
+				Obtiene la información recibida del servidor
+			*/
 
-					let parsed = JSON.parse(req.responseText);
-					let respuesta_parseada = parsed;
+			get(url, divID, texto_inicial){
+				var req = new XMLHttpRequest();
 
-					document.getElementById( divID ).innerHTML = texto_inicial + Object.values(respuesta_parseada) + "<br><br>";
+				req.onreadystatechange = function(){
+					if( this.readyState == 4 && this.status == 200 ){
 
+						let parsed = JSON.parse(req.responseText);
+						let respuesta_parseada = parsed;
+
+						document.getElementById( divID ).innerHTML = texto_inicial + Object.values(respuesta_parseada) + "<br><br>";
+
+					}
 				}
+
+				req.open( "GET", url, true );
+				req.send();
 			}
 
-			req.open( "GET", url, true );
-			req.send();
 		}
 
 		window.onload = function(){
 
-			PETICION("http://ip.jsontest.com/", "ip", "Tu IP es: ");
-			PETICION("http://headers.jsontest.com/", "headers", "Tus headers: ");
-			PETICION("http://date.jsontest.com/", "tiempo", "El tiempo: ");
+			AJAX.get("http://ip.jsontest.com/", "ip", "Tu IP es: ");
+			AJAX.get("http://headers.jsontest.com/", "headers", "Tus headers: ");
+			AJAX.get("http://date.jsontest.com/", "tiempo", "El tiempo: ");
 
 		}
 
