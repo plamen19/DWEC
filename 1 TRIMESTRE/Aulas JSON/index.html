@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ajax Aulas - Plamen Atanasov Eftimov</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+	<style>
+
+ 		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+		body, html{
+			background-color:white;
+			font-family: 'Montserrat';
+		}
+
+		table th, td{
+			padding:20px;
+			text-align:center;
+		}
+
+		table th{
+			background-color: rgba(0,150,250,0.4);
+			font-weight: bolder;
+		}
+
+		table tr>td{
+			font-size: 13px;
+		}
+
+		td{
+			padding:20px;
+			text-align:center;
+			background-color: rgba(0,150,250,0.1);
+		}
+
+		td img{
+			width:25px;
+		}
+
+		#tabla{
+			width: auto;
+			margin:0 auto;
+		}
+
+		table{
+			box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<br>
+
+		<div class="row">
+	         	<div class="col">
+				<h1>Ejercicio</h1>
+				<p>Ejercicio que muestra los ordenadores encendidos/apagados de un JSON de un aula virtual.</p>
+	         	</div>
+	        	<div class="col">
+				<div id="tabla">
+					<table>
+						<thead>
+
+							<th>PC</th>
+							<th>Alumno</th>
+							<th>S.O</th>
+							<th>Estado</th>
+
+						</thead>
+
+						<tbody id="pcs">
+							<tr>
+								<td></td>
+								<td>Cargando...</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+	        	</div>
+	       </div>
+	</div>
+
+	<script>
+
+		let div = document.getElementById("pcs");
+
+		let imgSO = {
+			['Linux']: "http://assets.stickpng.com/images/58480e82cef1014c0b5e4927.png",
+			['Lliurex']: "https://portal.edu.gva.es/cvtic/wp-content/uploads/sites/15/2019/04/logo-lliurex.png",
+			['Windows']: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/200px-Windows_logo_-_2012.svg.png",
+		}
+
+		function getEstadoAula(){
+			div.innerHTML = "";
+			fetch( "https://plamen19.github.io/jsontest/aulas.json" ).then(value => { return value.json(); }).then(resp => {
+
+				for (let i = 0; i < resp.length; i++) {
+					let pc = resp[i];
+					div.innerHTML += "<tr><td>"+pc.pc+"</td><td>"+pc.alumno+"</td><td>"+(imgSO[pc.so] ? "<img src='"+ imgSO[pc.so] +"'/>" : pc.so)+"</td><td>"+(pc.encendido ? "<i style='color:rgb(0,200,0);' class='bi bi-pc-display'></i>" : "<i style='color:red;' class='bi bi-pc-display'></i>" )+"</td></tr>";
+				}
+
+			});
+		}
+
+		setTimeout(getEstadoAula,1000)
+
+	</script>
+
+</body>
+</html>

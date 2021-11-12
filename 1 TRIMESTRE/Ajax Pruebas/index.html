@@ -7,8 +7,11 @@
 	<title>Ajax Pruebas - Plamen Atanasov Eftimov</title>
 	<style>
 
+ 		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 		body, html{
 			background-color:white;
+			font-family: 'Montserrat';
 		}
 
 	</style>
@@ -18,6 +21,7 @@
 	<div id="ip"></div>
 	<div id="headers"></div>
 	<div id="tiempo"></div>
+	<div id="cvs"></div>
 
 	<script>
 
@@ -28,7 +32,32 @@
 				Obtiene la información recibida del servidor
 			*/
 
-			get(url, divID, texto_inicial){
+			getEmpleados(url, divID, texto_inicial){
+				var req = new XMLHttpRequest();
+
+				req.onreadystatechange = function(){
+					if( this.readyState == 4 && this.status == 200 ){
+
+						let parseada = JSON.parse(this.responseText);
+						let divcvs = document.getElementById( divID );
+						let cvs = parseada.cvs_recibidos;
+
+						divcvs.innerHTML = "<span style='color:red;'>" + texto_inicial + "</span><br><br>";
+
+						for (let i = 0; i < cvs.length; i++) {
+							let e = cvs[i];
+							divcvs.innerHTML += e.nombre + " | " + e.profesion + " | "+ e.edad +" | "+ e.lenguajes +" | "+ (e.disponibilidadParaViajar ? "Puede viajar" : "No puede viajar") + " | Experiencia: "+e.rangoProfesional.aniosDeExperiencia+" años | Nivel: "+e.rangoProfesional.nivel+"<br><br>";
+						}
+
+
+					}
+				}
+
+				req.open( "GET", url, true );
+				req.send();
+			},
+
+			getParsed(url, divID, texto_inicial){
 				var req = new XMLHttpRequest();
 
 				req.onreadystatechange = function(){
@@ -37,7 +66,7 @@
 						let parsed = JSON.parse(req.responseText);
 						let respuesta_parseada = parsed;
 
-						document.getElementById( divID ).innerHTML = texto_inicial + Object.values(respuesta_parseada) + "<br><br>";
+						document.getElementById( divID ).innerHTML = "<span style='color:red;'>" + texto_inicial + "</span>" + Object.values(respuesta_parseada) + "<br><br>";
 
 					}
 				}
@@ -50,9 +79,13 @@
 
 		window.onload = function(){
 
-			AJAX.get("http://ip.jsontest.com/", "ip", "Tu IP es: ");
-			AJAX.get("http://headers.jsontest.com/", "headers", "Tus headers: ");
-			AJAX.get("http://date.jsontest.com/", "tiempo", "El tiempo: ");
+			AJAX.getParsed("http://ip.jsontest.com/", "ip", "Tu IP es: ");
+			AJAX.getParsed("http://headers.jsontest.com/", "headers", "Tus headers: ");
+			AJAX.getParsed("http://date.jsontest.com/", "tiempo", "El tiempo: ");
+
+			// Obtenidos de GITHUB:
+
+			AJAX.getEmpleados("https://plamen19.github.io/jsontest/cvs.json", "cvs", "CV's: ");
 
 		}
 
