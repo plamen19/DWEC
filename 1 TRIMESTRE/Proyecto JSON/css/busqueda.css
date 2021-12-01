@@ -1,0 +1,34 @@
+#btn_busq_provincia{
+
+       display:block;
+       margin:0 auto;
+       margin-top:20px;
+       width:50%;
+       background-color: rgba(255,150,0,0.5);
+       color: rgba(250,250,250,1);
+
+       transition: all .3s;
+
+}
+
+#btn_busq_provincia:focus{
+       border-color: rgba(255, 150, 0, 0.2);
+       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 150, 0, 0.6);
+       outline: 0 none;
+}
+
+#input_busq_provincia{
+       width:80%;
+       display:block;
+       margin:0 auto;
+
+       height:40px;
+
+       border-color: rgba(255,150,0,0.5);
+
+       transition: all .3s;
+}
+
+#input_busq_provincia:hover{
+       height:50px;
+}

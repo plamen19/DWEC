@@ -1,6 +1,13 @@
 const MIN_TEXT = 3;
 const MIN_PASS = 6;
+const MIN_CORREO = 8;
 const REGEX_NUMEROS = /\d+/;
+
+// ------------------------------
+
+// FUNCIONES AYUDANTES
+
+// ------------------------------
 
 function getEstudioSeleccionado(lista){
 
@@ -29,9 +36,29 @@ function getInteresesArray(intereses){
 
 }
 
+function validateEmail(email) {
+	const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+
+// ----------------------------------------------
+
+// FUNCIONES ONINPUT
+
 function comprobarLogitudTexto(e){
 
 	if (+e.target.value.length < MIN_TEXT || REGEX_NUMEROS.test(e.target.value)){
+
+		e.target.style.borderColor = 'red';
+
+	}else{
+		e.target.style.borderColor = 'inherit';
+	}
+
+}
+
+function comprobarCampoCorreo(e){
+	if (+e.target.value.length < MIN_CORREO || !validateEmail(e.target.value) ){
 
 		e.target.style.borderColor = 'red';
 
@@ -60,6 +87,10 @@ function comprobarPassword(e){
 		e.target.style.borderColor = 'inherit';
 	}
 }
+
+// -------------------------------------------
+
+// VALIDACIÓN FINAL
 
 function validarFormulario(){
 
@@ -91,9 +122,13 @@ function validarFormulario(){
 
 		document.getElementById("selector_articulos").style.color="red";
 
+	}else{
+		document.getElementById("selector_articulos").style.color="inherit";
 	}
 
 }
+
+// ----------------------------------------------
 
 function comprobarFormulario(e){
 
@@ -116,6 +151,8 @@ function comprobarFormulario(e){
 
 }
 
+/**-------------------------------------------------------------------- */
+
 window.onload = function(){
 
 	nombre = document.getElementsByName("nombre")[0];
@@ -131,6 +168,7 @@ window.onload = function(){
 	nombre.oninput = comprobarLogitudTexto;
 	apellido1.oninput = comprobarLogitudTexto;
 	apellido2.oninput = comprobarLogitudTexto;
+	email.oninput = comprobarCampoCorreo;
 	direccion.oninput = comprobarCampoDireccion;
 	pass.oninput = comprobarPassword;
 
@@ -138,3 +176,5 @@ window.onload = function(){
 	window.onsubmit = comprobarFormulario;
 
 }
+
+/**-------------------------------------------------------------------- */

@@ -1,0 +1,124 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+body,html{
+	background-color:white;
+	font-family:'Lato';
+}
+
+#contenido{
+	width:80%;
+	display:block;
+	margin:0 auto;
+	margin-top:20px;
+
+	font-weight:300;
+}
+
+#infocoches{
+	display: block;
+	margin:0 auto;
+	width:100%;
+	text-align:center;
+	margin-bottom: 50px;
+	margin-top: 20px;
+}
+
+.infocoche{
+	display:inline-grid;
+	border:1px solid rgba(0,0,0,0.2);
+	padding:10px;
+	width:300px;
+	margin:0 auto;
+	margin-right:20px;
+	margin-bottom:50px;
+	transition: all .3s;
+}
+
+.infocoche:hover{
+	background-color: rgba(255,150,0,0.1);
+}
+
+.infocoche h3{
+	text-align: center;
+}
+
+.infocoche ul li{
+	padding: 5px;
+	background-color: rgba(255,150,0,0.2);
+	margin:10px;
+	border-radius: 10px;
+}
+
+.infocoche ul{
+	list-style:"";
+	text-align: center;
+}
+
+.infocoche img{
+	width:250px;
+	display: block;
+	margin:0 auto;
+}
+
+.infocoche button{
+	float:right;
+	padding: 10px;
+	position: relative;
+	bottom:0;
+	background-color: rgba(255,150,0,0.5);
+	border:1px solid rgba(200,150,0,0.2);
+	margin-top:20px;
+
+	transition: all .3s;
+}
+
+.infocoche button:hover{
+	color: #fff;
+	cursor: pointer;
+}
+
+label{
+	color: rgb(255,150,0);
+}
+
+input{
+	padding: 5px;
+}
+
+textarea{
+	padding: 5px;
+}
+
+select{
+	padding: 10px;
+}
+
+input[type="checkbox"]{
+	margin-right:10px;
+	margin-left: 20px;
+	display: inline-block;
+}
+
+#botonEnviar{
+	padding: 10px;
+	width:100px;
+	background-color: rgba(255,150,0,0.5);
+	border:1px solid rgba(255,150,0,0.2);
+}
+
+#botonEnviar:hover{
+	cursor:pointer;
+}
+
+#botonVolver{
+	width: 100px;
+	padding: 5px;
+	margin-left: 10px;
+	background-color: rgba(255,150,0,0.5);
+	border:1px solid rgba(255,150,0,0.2);
+	color:#fff;
+}

@@ -1,0 +1,66 @@
+{
+  "name": "@s-r0/eggy-js",
+  "version": "1.3.4",
+  "main": "build/js/eggy.js",
+  "scripts": {
+    "task:css:sass": "sass --no-source-map src/scss:build/css && chalk green 'Sass complete'",
+    "task:css:post": "postcss build/css/*.css -d build/css && chalk green 'Post CSS complete'",
+    "task:js:babel": "babel src/js --out-dir build/js && chalk green 'Babel complete'",
+    "task:js:minify": "uglifyjs build/js/eggy.js -c -o build/js/eggy.js && chalk green 'JS minify complete'",
+    "build:css": "npm run task:css:sass",
+    "build:js": "npm run task:js:babel",
+    "build:styles": "node ./src/scripts/build_styles.js -s && chalk green 'Styles and icons added to JS'",
+    "watch": "clear && chokidar 'src/js/**/*.js' 'src/scss/**/*.scss' -c 'npm run -s build:css && npm run -s build:js && npm run task:css:post && npm run build:styles'",
+    "prod": "clear && npm run -s task:css:post && npm run build:styles && npm run -s task:js:minify && chalk bold green 'Production compile complete'"
+  },
+  "author": "Sam Rutter <info@samgraphic.co.uk> (https://samgraphic.co.uk/)",
+  "license": "MIT",
+  "description": "EggyJS is a Javascript micro Library for simple, lightweight toast popups focused on being dependency-less, lightweight, quick and efficient.",
+  "keywords": [
+    "Eggy",
+    "EggyJS",
+    "eggy-js",
+    "eggy.js",
+    "toast",
+    "javascript toast",
+    "toast popup",
+    "javascript popup",
+    "notification",
+    "javascript notification"
+  ],
+  "homepage": "https://github.com/S-R0/eggy-js",
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "autoprefixer": "^10.2.5",
+    "chalk-cli": "^4.1.0",
+    "chokidar-cli": "^2.1.0",
+    "cssnano": "^4.1.10",
+    "postcss": "^8.2.7",
+    "postcss-cli": "^8.3.1",
+    "postcss-ie11": "0.0.1",
+    "replace-in-file": "^6.2.0",
+    "sass": "^1.32.8",
+    "uglify-js": "^3.13.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie >= 9"
+  ],
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false,
+          "targets": {
+            "esmodules": true
+          }
+        }
+      ]
+    ]
+  }
+}

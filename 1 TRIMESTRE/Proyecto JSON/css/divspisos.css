@@ -1,0 +1,59 @@
+.propiedad{
+       display:inline-grid;
+       width:15rem;
+       height:25rem;
+       padding:10px;
+       margin:0 auto;
+       margin: 10px;
+       text-align: center;
+       box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+       position: relative;
+}
+
+.propiedad img{
+       width:90%;
+       display:block;
+       margin:0 auto;
+       margin-bottom: 10px;
+       border-radius: 5%;
+}
+
+.propiedad_superior{
+       position: absolute;
+       width:100%;
+       z-index:-2;
+       left:0;
+       top:0;
+}
+
+.precio{
+       color:rgb(255,150,0);
+}
+
+.rebaja{
+       font-size:10px;
+       color:#000;
+       display:block;
+       color: rgba(0,100,0,0.8);
+}
+
+.btn_ver_propiedad{
+
+       display:block;
+       margin:0 auto;
+       margin-top:20px;
+       width:80%;
+       background-color: rgba(255,150,0,0.5);
+       border: 1px solid rgba(255, 150, 0, 0.2);
+       border-radius: 5px;
+       box-shadow: none;
+       color: rgba(250,250,250,1);
+
+       transition: all .3s;
+
+}
+
+.btn_ver_propiedad:hover{
+       width:100%;
+       color: rgba(255,255,255,0.6);
+}

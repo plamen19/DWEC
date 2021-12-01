@@ -1,0 +1,76 @@
+.fotos_propiedad{
+
+       box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+       
+       width:60%;
+       display:block;
+       margin:0 auto;
+       border-radius: 10px;       
+
+}
+
+.div_paso_imagenes{
+
+       display:block;
+       text-align:center;
+
+}
+
+.area_extra{
+       width:80%;
+       margin:0 auto;
+       text-align: center;
+}
+
+.texto_extra{
+
+       color:rgba(255,150,0,0.8);
+       display:inline-block;
+       background-color: rgba(255,150,0, 0.1);
+       margin:10px;
+       padding:10px;
+       border-radius: 10px;
+
+}
+
+.paso_imagen{
+
+       border-radius:100%;
+       padding: 7px;
+       background-color: rgba(255,150,0,0.3);
+       display:inline-block;
+       margin:10px;
+
+       margin-top: 40px;
+
+       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+
+       
+}
+
+.a_volver{
+
+       position: absolute;
+
+       color:rgb(255,150,0);
+       text-decoration:none;
+       bottom:-40px;
+
+       right:0;
+
+}
+
+.etiqueta_tipo{
+
+       padding:5px 5px 5px 5px;
+       background-color:rgba(255,150,0,0.8);
+       color: #fff;
+       font-size: 12px;
+       border-radius: 10px;
+
+       position: absolute;
+       margin-left:10px;
+       top:6px;
+
+}
